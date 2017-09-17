@@ -11,6 +11,7 @@
     "test:auto": "npm test -- --watch --inspect"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.28",
     "@types/webpack": "^3.0.10",
@@ -20,6 +21,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
+    "chai": "^4.1.2",
     "clean-webpack-plugin": "^0.1.16",
     "jsverify": "^0.8.3",
     "mocha": "^3.5.3",
