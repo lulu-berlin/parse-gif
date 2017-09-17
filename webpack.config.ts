@@ -17,49 +17,57 @@ const config: webpack.Configuration = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-    rules: [{
-      test: /\.ts$/,
-      exclude: /node_modules/,
-      use: [{
-        loader: 'awesome-typescript-loader',
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              configFileName: TSCONFIG_FILENAME,
+              useBabel: true,
+              babelOptions: {
+                presets: ['es2015']
+              },
+              useCache: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
+        loader: 'tslint-loader',
         options: {
-          configFileName: TSCONFIG_FILENAME,
-          useBabel: true,
-          babelOptions: {
-            presets: ['es2015']
-          },
-          useCache: true
+          configFile: 'tslint.json',
+          emitErrors: true,
+          failOnHint: true,
+          typeCheck: false,
+          fix: false,
+          tsConfigFile: TSCONFIG_FILENAME
         }
-      }]
-    }, {
-      test: /\.ts$/,
-      exclude: /node_modules/,
-      enforce: 'pre',
-      loader: 'tslint-loader',
-      options: {
-        configFile: 'tslint.json',
-        emitErrors: true,
-        failOnHint: true,
-        typeCheck: false,
-        fix: false,
-        tsConfigFile: TSCONFIG_FILENAME
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015']
+            }
+          }
+        ]
       }
-    }, {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader',
-        options: {
-          presets: ['es2015']
-        }
-      }]
-    }]
+    ]
   },
   plugins: [
     new BabiliPlugin(),
     new webpack.optimize.UglifyJsPlugin()
   ],
-  devtool: 'source-map',
+  devtool: ENV === 'DEV' ? 'source-map' : undefined,
   resolve: {
     extensions: ['.ts', '.js'],
     modules: [
