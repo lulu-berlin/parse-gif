@@ -1,5 +1,7 @@
 # parse-gif
 
+[![Build Status](https://travis-ci.org/yever/parse-gif.svg?branch=master)](https://travis-ci.org/yever/parse-gif)
+
 # License
 
 (c) Ya'ar Hever, 2017
