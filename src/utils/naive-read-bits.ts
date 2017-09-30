@@ -1,3 +1,9 @@
+type ReadBits = (
+  data: ArrayLike<number>,
+  fromBit: number,
+  nBits: number
+) => number;
+
 /*
  * readBits(data, fromBit, nBits) => number
  *
@@ -6,16 +12,12 @@
  * This is a simple implementation that's easy to test for correctness.
  * It is only used for testing the optimized implementation.
  */
-export const readBits = (data: ArrayLike<number>, fromBit: number, nBits: number) => {
-  let result = 0;
-
+export const readBits: ReadBits = (data, fromBit, nBits, result = 0) => {
   while (nBits-- > 0) {
     const curBit = fromBit + nBits;
-    const offset = (curBit / 8) | 0;
-    const bitmask = 1 << (curBit % 8);
-    const bit = +!!(data[offset] & bitmask);
 
-    result = (result << 1) + bit;
+    result = (result << 1) +
+      +!!(data[curBit >> 3] & (1 << (curBit % 8)));
   }
 
   return result;
