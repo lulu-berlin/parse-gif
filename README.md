@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/yever/parse-gif.svg?branch=master)](https://travis-ci.org/yever/parse-gif)
 
+A small and fast library for parsing GIFs (animated or not) written in typescript.
+
+(Not yet ready for production.)
+
 # License
 
 (c) Ya'ar Hever, 2017
