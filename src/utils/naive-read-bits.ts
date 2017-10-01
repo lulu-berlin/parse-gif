@@ -1,8 +1,4 @@
-type ReadBits = (
-  data: ArrayLike<number>,
-  fromBit: number,
-  nBits: number
-) => number;
+import {ReadBits} from './types';
 
 /*
  * readBits(data, fromBit, nBits) => number
