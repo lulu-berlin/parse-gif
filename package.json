@@ -8,7 +8,8 @@
   "scripts": {
     "build": "webpack",
     "test": "mocha --opts mocha.opts",
-    "test:auto": "npm test -- --watch --inspect"
+    "test:auto": "npm test -- --watch --inspect",
+    "tslint": "tslint -c tslint.json -p src/tsconfig.json --type-check -t stylish"
   },
   "devDependencies": {
     "@types/chai": "^4.0.4",
