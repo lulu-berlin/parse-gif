@@ -6,6 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": false,
     "removeComments": true,
+    "stripInternal": true,
     "lib": [
       "dom",
       "es6"

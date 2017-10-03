@@ -1,3 +1,5 @@
+/** @internal */
+
 import {ReadBits} from './types';
 
 /*

@@ -4,8 +4,9 @@ const BITMASK = Array.from({ length: 9 }, (_, i) => (1 << i) - 1);
 
 const getBitmask = (n: number) => BITMASK[n < 8 ? n : 8];
 
-/*
- * readBits(data, fromBit, nBits):
+/** @internal
+ *
+ * readBits(data, fromBit, nBits)
  *
  */
 export const readBits: ReadBits = (
