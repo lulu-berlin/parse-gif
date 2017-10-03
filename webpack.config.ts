@@ -31,9 +31,6 @@ const config: webpack.Configuration = {
             options: {
               configFileName: TSCONFIG_FILENAME,
               useBabel: true,
-              babelOptions: {
-                presets: ['env']
-              },
               useCache: true
             }
           }
@@ -56,14 +53,7 @@ const config: webpack.Configuration = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['env']
-            }
-          }
-        ]
+        use: ['babel-loader']
       }
     ]
   },
