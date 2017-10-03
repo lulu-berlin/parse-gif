@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": false,
+    "removeComments": true,
     "lib": [
       "dom",
       "es6"
     ],
-    "declaration": false,
-    "importHelpers": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "importHelpers": false,
     "strict": true,
     "baseUrl": "./",
     "typeRoots": [

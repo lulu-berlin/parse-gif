@@ -6,42 +6,6 @@ import {readBits} from './naive-read-bits';
 describe('Naïve implementation of readBits():', () => {
   describe('Properties:', () => {
     jsc.property(
-      'readBits([(fromBit / 8 + 1) * 0xff], fromBit, 1) === 1',
-      jsc.uint8,
-      fromBit => readBits(
-        Array.from({length: fromBit / 8 + 1}, () => 0xff),
-        fromBit,
-        1
-      ) === 1
-    );
-
-    jsc.property(
-      'readBits([(fromBit / 8 + 1) * 0x00], fromBit, 1) === 0',
-      jsc.uint8,
-      fromBit => readBits(
-        Array.from({length: fromBit / 8 + 1}, () => 0x00),
-        fromBit,
-        1
-      ) === 0
-    );
-
-    jsc.property(
-      'readBits([x], 0, 8) === x',
-      jsc.uint8,
-      x => readBits([x], 0, 8) === x
-    );
-
-    jsc.property(
-      'readBits([0, 0, ...], x, y) === 0',
-      jsc.uint8, jsc.uint8,
-      (x, y) => readBits(
-        Array.from({length: x / 8 + y / 8 + 1}, () => 0x00),
-        x,
-        y
-      ) === 0
-    );
-
-    jsc.property(
       'readBits([0xff, 0xff, ...], x, y) === (1 << y) - 1',
       jsc.uint8, jsc.nat(14),
       (x, y) => readBits(
@@ -49,6 +13,16 @@ describe('Naïve implementation of readBits():', () => {
         x,
         y
       ) === (1 << y) - 1
+    );
+
+    jsc.property(
+      'readBits([0x00, 0x00, ...], x, y) === 0',
+      jsc.uint8, jsc.nat(14),
+      (x, y) => readBits(
+        Array.from({length: x / 8 + y / 8 + 1}, () => 0x00),
+        x,
+        y
+      ) === 0
     );
   });
 

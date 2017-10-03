@@ -9,18 +9,18 @@ const getBitmask = (n: number) => BITMASK[n < 8 ? n : 8];
  *
  */
 export const readBits: ReadBits = (
-  data, from, nBits,
+  data, from, nBits
   // the following are hidden parameters used to improve minification
-  offset = from >> 3,
-  fromBit = from % 8,
-  result = (data[offset] >> fromBit) & getBitmask(nBits),
-  i = 0,
-  bitsToRead = nBits - Math.min(8 - fromBit, 8)
 ) => {
+  const offset = from >> 3;
+  const fromBit = from % 8;
+
+  let result = (data[offset] >> fromBit) & getBitmask(nBits);
+  let i = 0;
+  let bitsToRead = nBits - Math.min(8 - fromBit, 8);
+
   while (bitsToRead > 0) {
-    result += (
-      (data[++i + offset] & getBitmask(bitsToRead)) << ((i << 3) - fromBit)
-    );
+    result += (data[++i + offset] & getBitmask(bitsToRead)) << ((i << 3) - fromBit);
     bitsToRead -= 8;
   }
 

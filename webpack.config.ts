@@ -1,5 +1,6 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
+const nodeExternals: any = require('webpack-node-externals');
 
 // const CleanWebpackPlugin: any = require('clean-webpack-plugin');
 const UglifyJSPlugin: any = require('uglifyjs-webpack-plugin');
@@ -14,8 +15,11 @@ const config: webpack.Configuration = {
   entry: './index.ts',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    libraryTarget: 'commonjs2'
   },
+  target: 'node',
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -28,7 +32,7 @@ const config: webpack.Configuration = {
               configFileName: TSCONFIG_FILENAME,
               useBabel: true,
               babelOptions: {
-                presets: ['es2015']
+                presets: ['env']
               },
               useCache: true
             }
@@ -56,7 +60,7 @@ const config: webpack.Configuration = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015']
+              presets: ['env']
             }
           }
         ]
@@ -64,8 +68,34 @@ const config: webpack.Configuration = {
     ]
   },
   plugins: [
+    new webpack.optimize.AggressiveMergingPlugin({}),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
     new BabiliPlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        drop_console: true,
+        screw_ie8: true,
+        sequences: true,
+        properties: true,
+        dead_code: true,
+        drop_debugger: true,
+        conditionals: true,
+        comparisons: true,
+        evaluate: true,
+        booleans: true,
+        loops: true,
+        unused: true,
+        if_return: true,
+        join_vars: true,
+        cascade: true,
+        negate_iife: true,
+        hoist_funs: true,
+        warnings: false
+      },
+      mangle: {
+        screw_ie8: true
+      }
+    })
   ],
   devtool: ENV === 'DEV' ? 'source-map' : undefined,
   resolve: {

@@ -1,3 +1,5 @@
+import {readBits} from './utils';
+
 export const parseGIF = () => {
-  throw new Error('what up?');
+  readBits([], 0, 0);
 };
