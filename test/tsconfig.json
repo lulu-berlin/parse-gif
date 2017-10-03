@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
+    "alwaysStrict": false,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "removeComments": true,
+    "stripInternal": true,
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "declaration": true,
+    "declarationDir": "./dist",
+    "importHelpers": false,
+    "baseUrl": "./",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/type-declarations"
+    ],
+    "types": [
+      "webpack-env",
+      "mocha",
+      "node"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
