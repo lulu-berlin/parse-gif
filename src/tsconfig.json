@@ -1,10 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es6",
+    "module": "es6",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
     "alwaysStrict": false,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
     "removeComments": true,
     "stripInternal": true,
     "lib": [
@@ -14,7 +21,6 @@
     "declaration": true,
     "declarationDir": "./dist",
     "importHelpers": false,
-    "strict": true,
     "baseUrl": "./",
     "typeRoots": [
       "./node_modules/@types",

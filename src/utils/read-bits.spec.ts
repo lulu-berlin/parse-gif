@@ -1,4 +1,4 @@
-import jsc = require('jsverify');
+import * as jsc from 'jsverify';
 import {expect} from 'chai';
 
 import {readBits as naiveReadBits} from './naive-read-bits';

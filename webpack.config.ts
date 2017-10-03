@@ -1,12 +1,10 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 const nodeExternals: any = require('webpack-node-externals');
-
-// const CleanWebpackPlugin: any = require('clean-webpack-plugin');
-const UglifyJSPlugin: any = require('uglifyjs-webpack-plugin');
 const BabiliPlugin: any = require('babili-webpack-plugin');
+import {CheckerPlugin} from 'awesome-typescript-loader';
 
-const TSCONFIG_FILENAME = path.resolve(__dirname, 'tsconfig.json');
+const TSCONFIG_FILENAME = path.resolve(__dirname, 'src', 'tsconfig.json');
 
 const ENV = process.env.ENV === 'DEV' ? 'DEV' : 'PROD';
 
@@ -58,7 +56,7 @@ const config: webpack.Configuration = {
     ]
   },
   plugins: [
-    new webpack.optimize.AggressiveMergingPlugin({}),
+    new CheckerPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new BabiliPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -84,8 +82,10 @@ const config: webpack.Configuration = {
       },
       mangle: {
         screw_ie8: true
-      }
-    })
+      },
+      comments: false
+    }),
+    new webpack.optimize.AggressiveMergingPlugin({})
   ],
   devtool: ENV === 'DEV' ? 'source-map' : undefined,
   resolve: {

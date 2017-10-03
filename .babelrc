@@ -2,8 +2,11 @@
   "presets": [
     ["env", {
       "targets": {
-        "browsers": ["> 1%", "IE 11"]
+        "browsers": ["> 1%", "IE 11"],
+        "node": "current"
       },
+      "modules": false,
+      "loose": true
     }]
   ]
 }
