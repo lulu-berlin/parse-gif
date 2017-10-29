@@ -15,8 +15,8 @@
     "removeComments": true,
     "stripInternal": true,
     "lib": [
-      "dom",
-      "es6"
+      "es2015",
+      "dom"
     ],
     "declaration": true,
     "declarationDir": "./dist",
@@ -32,9 +32,6 @@
       "node"
     ]
   },
-  "include": [
-    "./src/**/*.ts"
-  ],
   "exclude": [
     "node_modules",
     "dist"

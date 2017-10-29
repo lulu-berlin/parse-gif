@@ -1,5 +1,8 @@
 import {readBits} from './utils';
 
-export const parseGIF = () => {
-  readBits([], 0, 0);
+export type ParseGIF = (gif: Uint8Array) => Promise<void>;
+
+export const parseGIF: ParseGIF = async (gif) => {
+  readBits(gif, 0, 6);
+  throw new Error('bla?');
 };

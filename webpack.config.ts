@@ -4,7 +4,7 @@ const nodeExternals: any = require('webpack-node-externals');
 const MinifyPlugin: any = require('babel-minify-webpack-plugin');
 import {CheckerPlugin} from 'awesome-typescript-loader';
 
-const TSCONFIG_FILENAME = path.resolve(__dirname, 'src', 'tsconfig.json');
+const TSCONFIG_FILENAME = path.resolve(__dirname, 'tsconfig.json');
 
 const ENV = process.env.ENV === 'DEV' ? 'DEV' : 'PROD';
 
