@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack",
     "test": "mocha --opts mocha.opts",
-    "test:auto": "npm test -- --watch --inspect",
+    "test:auto": "nodemon",
     "tslint": "tslint -c tslint.json -p src/tsconfig.json --type-check -t stylish"
   },
   "devDependencies": {
@@ -26,6 +26,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "jsverify": "^0.8.3",
     "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",
@@ -33,5 +34,9 @@
     "webpack": "^3.8.1",
     "webpack-node-externals": "^1.6.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "nodemonConfig": {
+    "ext": "*.ts",
+    "exec": "npm test -- --watch --insect"
+  }
 }
