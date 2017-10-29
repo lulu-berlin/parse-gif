@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 const nodeExternals: any = require('webpack-node-externals');
-const BabiliPlugin: any = require('babili-webpack-plugin');
+const MinifyPlugin: any = require('babel-minify-webpack-plugin');
 import {CheckerPlugin} from 'awesome-typescript-loader';
 
 const TSCONFIG_FILENAME = path.resolve(__dirname, 'src', 'tsconfig.json');
@@ -58,7 +58,11 @@ const config: webpack.Configuration = {
   plugins: [
     new CheckerPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(true),
-    new BabiliPlugin(),
+    new MinifyPlugin({
+      mangle: {
+        topLevel: true
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         drop_console: true,
